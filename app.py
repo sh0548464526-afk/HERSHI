@@ -24,8 +24,10 @@ HTML = """
             font-size: 52px;
             text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
         }
-        img {
+        .image-box {
             margin-top: 30px;
+        }
+        img {
             max-width: 70%;
             border-radius: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -43,7 +45,12 @@ HTML = """
 </head>
 <body>
     <h1>ברוך הבא לאתר של הערשי!</h1>
-    <img src="{{ url_for('static', filename='image.jpg') }}" alt="תמונה">
+    
+    <div class="image-box">
+        <!-- החלף ל-image.jpg שלך או השתמש בקישור זמני -->
+        <img src="{{ url_for('static', filename='image.jpg') }}" alt="תמונה">
+    </div>
+    
     <footer>
         האתר נבנה באהבה
     </footer>
@@ -56,5 +63,5 @@ def home():
     return render_template_string(HTML)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))  # Render מספק פורט מהסביבה
+    port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
